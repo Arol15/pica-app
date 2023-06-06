@@ -1,8 +1,25 @@
-const API_URL = `https://pixabay.com/api/?key=${import.meta.env.VITE_PIXABAY_API_KEY}`
+import { useEffect, useState } from "react";
+
+const API_URL = `https://pixabay.com/api/?key=${import.meta.env.VITE_PIXABAY_API_KEY}`;
+
+interface Image {
+  id: number; 
+  previewURL: string;
+}
 
 function App() {
 
-  console.log(API_URL)
+  const [searchResult, setSearchResult] = useState<Image[]>([])
+
+  useEffect(() => {
+
+    const getImages = async () => {
+      const response = await fetch(`${API_URL}&q=flamingo`);
+      const data = await response.json();
+      setSearchResult(data.hits)
+    }
+    getImages();
+  }, [])
 
   return (
     <div>
@@ -10,7 +27,11 @@ function App() {
       <input placeholder="Search for images "></input>
       <button>Search</button>
       <div>
-        result images go here...
+        {searchResult.length > 0 && searchResult.map(result => (
+          <div key={result.id}> 
+            <img src={result.previewURL} /> 
+          </div>
+        ))}
       </div>
     </div>
   )
