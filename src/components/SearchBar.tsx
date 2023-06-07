@@ -19,7 +19,6 @@ function SearchBar({handleSearch}: SearchBarProps) {
         <input 
             className='searchbox'
             placeholder="Search images..." 
-            required={true}
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
