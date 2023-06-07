@@ -1,14 +1,14 @@
-import {useState} from 'react';
+import { KeyboardEvent, useState} from 'react';
 
 interface SearchBarProps {
-  handleSearch: any;
+  handleSearch(inputValue: string): Promise<void>;
 }
 
 function SearchBar({handleSearch}: SearchBarProps) {
 
   const [inputValue, setInputValue] = useState('');
 
-  function handleKeyDown(event: any) { //todo update type
+  function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) { 
     if(event.key === "Enter") {
       handleSearch(inputValue)
     }
