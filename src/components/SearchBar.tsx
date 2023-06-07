@@ -1,17 +1,21 @@
+import {useState} from 'react';
+
 interface SearchBarProps {
-  searchQuery: string; 
-  setSearchQuery: (value: string) => void; 
+  handleSearch: any;
 }
 
-function SearchBar({searchQuery, setSearchQuery}: SearchBarProps) {
+function SearchBar({handleSearch}: SearchBarProps) {
+
+  const [inputValue, setInputValue] = useState('');
+
   return (
       <>  
         <input placeholder="Search images..." 
             type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
          />
-         <button>Search</button>
+         <button onClick={() => handleSearch(inputValue)}>Search</button>
         </>
   )
 }

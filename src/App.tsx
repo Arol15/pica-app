@@ -31,35 +31,46 @@ function App() {
   const [status, setStatus] = useState<Status>('idle');
   const [error, setError] = useState(null);
 
-  const debouncedQuery = useDebounceValue(searchQuery);
+  // const debouncedQuery = useDebounceValue(searchQuery);
 
-  useEffect(() => {
-    setError(null);
+  // useEffect(() => {
+  //   setError(null);
 
-    const getImages = async () => {
-      setStatus('idle')
-      setSearchResult([]);
-      if (debouncedQuery.length > 0) {
-        setStatus('loading')
-        const response = await fetch(`${API_URL}&q=${debouncedQuery}`)
+  //   const getImages = async () => {
+  //     setStatus('idle')
+  //     setSearchResult([]);
+  //     if (debouncedQuery.length > 0) {
+  //       setStatus('loading')
+  //       const response = await fetch(`${API_URL}&q=${debouncedQuery}`)
 
-        if (!response.ok) {
-          setStatus('error')
-        }
+  //       if (!response.ok) {
+  //         setStatus('error')
+  //       }
 
-        const data = await response.json();
-        setSearchResult(data.hits);
-        setStatus('success')
-      }
+  //       const data = await response.json();
+  //       setSearchResult(data.hits);
+  //       setStatus('success')
+  //     }
+  //   }
+  //   getImages();
+
+  // }, [debouncedQuery, error]);
+
+  async function handleSearch(inputValue: string) {
+    try{
+      const response = await fetch(`${API_URL}&q=${inputValue}`);
+      const data = await response.json();
+      setSearchResult(data.hits);
+
+    } catch (error: any) {
+      console.log("Error occured while fetching images data", error.message)
     }
-    getImages();
-
-  }, [debouncedQuery, error]);
+  }
 
   return (
     <div>
       <h1>Find your awesome image!</h1>
-      <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
+      <SearchBar handleSearch={handleSearch}/>
         {status === 'error' && (
           <p>Sorry, something went wrong :/</p>
         )}
@@ -68,7 +79,7 @@ function App() {
 
         {searchResult?.map(result => (
           <div key={result.id}> 
-            <img src={result.previewURL} alt={`${searchQuery} images`}/> 
+            <img src={result.previewURL} alt='temp image'/> 
           </div>
         ))}
     </div>
