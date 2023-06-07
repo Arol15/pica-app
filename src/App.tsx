@@ -17,6 +17,7 @@ function App() {
   const [status, setStatus] = useState<Status>('idle');
 
   async function handleSearch(inputValue: string) {
+    if(inputValue.length === 0) return;
     setStatus('idle');
     try{
       setStatus('loading')
