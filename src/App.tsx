@@ -7,6 +7,8 @@ interface Image {
   previewURL: string;
 }
 
+type Status = 'idle' | 'loading' | 'success' | 'error';
+ 
 function useDebounceValue(value: string, delay = 500) {
   const [debounceValue, setDebounceValue] = useState('');
 
@@ -25,21 +27,33 @@ function App() {
 
   const [searchResult, setSearchResult] = useState<Image[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [status, setStatus] = useState<Status>('idle');
+  const [error, setError] = useState(null);
 
   const debouncedQuery = useDebounceValue(searchQuery);
 
   useEffect(() => {
+    setError(null);
 
     const getImages = async () => {
+      setStatus('idle')
       setSearchResult([]);
       if (debouncedQuery.length > 0) {
-        const response = await fetch(`${API_URL}&q=${debouncedQuery}`);
+        setStatus('loading')
+        const response = await fetch(`${API_URL}&q=${debouncedQuery}`)
+
+        if (!response.ok) {
+          setStatus('error')
+        }
+        
         const data = await response.json();
         setSearchResult(data.hits);
+        setStatus('success')
       }
     }
     getImages();
-  }, [debouncedQuery]);
+
+  }, [debouncedQuery, error]);
 
   return (
     <div>
@@ -49,14 +63,18 @@ function App() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
       />
-      <button>Search</button>
-      <div>
-        {searchResult.length > 0 && searchResult.map(result => (
+        {status === 'error' && (
+          <p>Sorry, something went wrong :/</p>
+        )}
+        {status === 'loading' && <p>Hold tight, your images are loading...</p>}
+        {searchResult.length === 0 && status === 'success' && <p>No images. Try new search!</p>}
+
+        {searchResult?.map(result => (
           <div key={result.id}> 
             <img src={result.previewURL} alt={`${searchQuery} images`}/> 
           </div>
         ))}
-      </div>
+ 
     </div>
   )
 }
