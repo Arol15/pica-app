@@ -7,20 +7,39 @@ interface Image {
   previewURL: string;
 }
 
+function useDebounceValue(value: string, delay = 500) {
+  const [debounceValue, setDebounceValue] = useState('');
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setDebounceValue(value);
+    }, delay);
+
+    return () => clearTimeout(timeoutId);
+  }, [value, delay]);
+
+  return debounceValue;
+}
+
 function App() {
 
   const [searchResult, setSearchResult] = useState<Image[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
 
+  const debouncedQuery = useDebounceValue(searchQuery);
+
   useEffect(() => {
 
     const getImages = async () => {
-      const response = await fetch(`${API_URL}&q=${searchQuery}`);
-      const data = await response.json();
-      setSearchResult(data.hits)
+      setSearchResult([]);
+      if (debouncedQuery.length > 0) {
+        const response = await fetch(`${API_URL}&q=${debouncedQuery}`);
+        const data = await response.json();
+        setSearchResult(data.hits);
+      }
     }
     getImages();
-  }, [searchQuery]);
+  }, [debouncedQuery]);
 
   return (
     <div>
