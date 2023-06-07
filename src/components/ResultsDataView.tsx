@@ -6,9 +6,9 @@ interface ResultsDataViewProps {
 
 function ResultsDataView({searchResult}: ResultsDataViewProps) {
   return (
-    <div>
+    <div className='images-container'>
       {searchResult?.map(result => (
-        <div key={result.id}> 
+        <div className='grid-image'key={result.id}> 
           <img src={result.previewURL} alt='temp image'/> 
         </div>
       ))}
