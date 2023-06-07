@@ -15,7 +15,7 @@ function SearchBar({handleSearch}: SearchBarProps) {
   }
  
   return (
-      <>  
+      <div>  
         <input placeholder="Search images..." 
             type="text"
             value={inputValue}
@@ -23,7 +23,7 @@ function SearchBar({handleSearch}: SearchBarProps) {
             onKeyDown={handleKeyDown}
          />
          <button onClick={() => handleSearch(inputValue)}>Search</button>
-        </>
+        </div>
   )
 }
 
