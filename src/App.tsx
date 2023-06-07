@@ -1,9 +1,10 @@
 import { useState } from "react";
 import SearchBar from "./components/SearchBar";
+import ResultsDataView from "./components/ResultsDataView";
 
 const API_URL = `https://pixabay.com/api/?key=${import.meta.env.VITE_PIXABAY_API_KEY}`;
 
-interface Image {
+export interface Image {
   id: number; 
   previewURL: string;
 }
@@ -35,16 +36,11 @@ function App() {
       <h1>Find your awesome image!</h1>
       <SearchBar handleSearch={handleSearch}/>
         {status === 'error' && (
-          <p>Sorry, something went wrong :/</p>
+          <p>Sorry, something went wrong.</p>
         )}
         {status === 'loading' && <p>Hold tight, your images are loading...</p>}
         {searchResult.length === 0 && status === 'success' && <p>No images. Please try another search term.</p>}
-
-        {searchResult?.map(result => (
-          <div key={result.id}> 
-            <img src={result.previewURL} alt='temp image'/> 
-          </div>
-        ))}
+      <ResultsDataView searchResult={searchResult}/>
     </div>
   )
 }
