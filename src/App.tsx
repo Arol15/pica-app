@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import SearchBar from "./components/SearchBar";
 
 const API_URL = `https://pixabay.com/api/?key=${import.meta.env.VITE_PIXABAY_API_KEY}`;
 
@@ -58,11 +59,7 @@ function App() {
   return (
     <div>
       <h1>Find your awesome image!</h1>
-      <input placeholder="Search images..." 
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-      />
+      <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
         {status === 'error' && (
           <p>Sorry, something went wrong :/</p>
         )}
