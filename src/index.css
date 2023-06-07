@@ -90,3 +90,9 @@
   justify-content: center;
   border-radius: .5rem;
 }
+
+.status-message {
+  margin: 5rem 10rem;
+  display: flex;
+  justify-content: center;
+}
