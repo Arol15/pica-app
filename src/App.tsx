@@ -45,7 +45,7 @@ function App() {
         if (!response.ok) {
           setStatus('error')
         }
-        
+
         const data = await response.json();
         setSearchResult(data.hits);
         setStatus('success')
@@ -74,7 +74,6 @@ function App() {
             <img src={result.previewURL} alt={`${searchQuery} images`}/> 
           </div>
         ))}
- 
     </div>
   )
 }
