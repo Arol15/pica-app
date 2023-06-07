@@ -34,7 +34,7 @@ function App() {
       <div>
         {searchResult.length > 0 && searchResult.map(result => (
           <div key={result.id}> 
-            <img src={result.previewURL} /> 
+            <img src={result.previewURL} alt={`${searchQuery} images`}/> 
           </div>
         ))}
       </div>
