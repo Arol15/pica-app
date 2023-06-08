@@ -11,17 +11,25 @@ export interface Image {
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
 
+const IMAGES_PER_REQUEST = 200; 
+const IMAGES_PER_PAGE = 20; 
+
 function App() {
 
   const [searchResult, setSearchResult] = useState<Image[]>([]);
   const [status, setStatus] = useState<Status>('idle');
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const indexOfLastImage = currentPage * IMAGES_PER_PAGE; 
+  const indexOfFirstPost = indexOfLastImage - IMAGES_PER_PAGE; 
+  const currentImages = searchResult.slice(indexOfFirstPost, indexOfLastImage);
 
   async function handleSearch(inputValue: string) {
     if(inputValue.length === 0) return;
     setStatus('idle');
     try{
       setStatus('loading')
-      const response = await fetch(`${API_URL}&q=${inputValue}`);
+      const response = await fetch(`${API_URL}&q=${inputValue}&per_page=${IMAGES_PER_REQUEST}`);
       const data = await response.json();
       setSearchResult(data.hits);
       setStatus('success')
@@ -47,7 +55,7 @@ function App() {
         )}
         {status === 'loading' && <p className="status-message">Loading...</p>}
         {searchResult.length === 0 && status === 'success' && <p className="status-message">No images. Please try another search term.</p>}
-      <ResultsDataView searchResult={searchResult}/>
+      <ResultsDataView searchResult={currentImages}/>
     </div>
   )
 }
