@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SearchBar from "./components/SearchBar";
 import ResultsDataView from "./components/ResultsDataView";
+import Pagination from "./components/Pagination";
 
 const API_URL = `https://pixabay.com/api/?key=${import.meta.env.VITE_PIXABAY_API_KEY}`;
 
@@ -40,6 +41,10 @@ function App() {
     }
   }
 
+  function paginate(page: number) {
+    setCurrentPage(page); 
+  }
+
   return (
     <div className="wrapper">
       <header className="header">
@@ -56,6 +61,7 @@ function App() {
         {status === 'loading' && <p className="status-message">Loading...</p>}
         {searchResult.length === 0 && status === 'success' && <p className="status-message">No images. Please try another search term.</p>}
       <ResultsDataView searchResult={currentImages}/>
+      {searchResult.length > 0 && <Pagination currentPage={currentPage} paginate={paginate} totalImages={IMAGES_PER_REQUEST} imagesPerPage={IMAGES_PER_PAGE} />}
     </div>
   )
 }
