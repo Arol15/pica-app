@@ -8,8 +8,12 @@ function ResultsDataView({searchResult}: ResultsDataViewProps) {
   return (
     <div className='images-container'>
       {searchResult?.map(result => (
-        <div className='grid-image'key={result.id}> 
-          <img src={result.previewURL} alt='temp image'/> 
+        <div className='image-card' key={result.id}> 
+          <img className='result-image' src={result.webformatURL} alt='searched image'/>
+          <div className='image-details'>
+            <p className='username'>By: {result.user}</p>
+            <p className='views'>Views: {result.views}</p>
+          </div>
         </div>
       ))}
     </div>

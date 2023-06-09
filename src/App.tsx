@@ -64,11 +64,13 @@ function App() {
     <div className="wrapper">
       <header className="header">
         <div className='logo'> 
-        <span role='img'>📸 </span>
-        <h1>Pica App</h1>
+          <span role='img'>📸 </span>  
+          <h1>Pica App</h1>
         </div>
-        <SearchBar handleSearch={handleSearch}/>
-        {searchResult.length > 0 && <p className="num-results">Found {searchResult.length} results</p>}
+        <div className='search-details'>
+          <SearchBar handleSearch={handleSearch}/>
+          {searchResult.length > 0 && <p className="num-results">Found {searchResult.length} results</p>}
+        </div>
       </header>
 
         {status === 'error' && (

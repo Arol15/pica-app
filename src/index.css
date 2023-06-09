@@ -1,4 +1,4 @@
-* {
+*, html {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -9,11 +9,100 @@ body {
   font-size: 16px; 
 }
 
+.wrapper {
+  width: 100%;
+  margin: auto;
+  position: relative;
+}
+
+.header {
+  height: 100px;
+  background-color: violet;
+  position: fixed;
+  width: 100%;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 200px;
+}
+
+.logo span {
+  font-size: 26px;
+}
+
+.logo h1 {
+  font-size: 26px;
+}
+
+.num-results {
+  min-width: 200px;
+  text-align: end;
+  font-size: 18px;
+}
+
+.search-details {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-container {
+  display: flex;
+  width: 100%;
+}
+
+.search-container button {
+  padding: 10px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.searchbox {
+  flex-grow: 1;
+  font-size: 16px;
+  padding: 10px 8px;
+  border: none; 
+}
+
+.images-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 150px 100px;
+  padding-bottom: 50px;
+  gap: 10px;
+  margin: auto 0;
+}
+
+.image-card {
+  width: 260px;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.result-image {
+  width: 260px;
+}
+
+.image-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+
+}
+
 .pagination-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 50px 0; 
+  padding-bottom: 50px; 
   gap: 10px;
 }
 
@@ -33,4 +122,16 @@ body {
 
 .pagination-container .active {
   background: violet;
+}
+
+@media (max-width: 800px) {
+  .images-container {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 150px 10px
+
+  
+  }
+  .header {
+    flex-direction: column;
+  }
 }
