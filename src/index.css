@@ -62,6 +62,7 @@ body {
   padding: 10px;
   background-color: #fff;
   cursor: pointer;
+
 }
 
 .searchbox {
@@ -85,6 +86,7 @@ body {
   background-color: white;
   border-radius: 10px;
   margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .result-image {
@@ -95,8 +97,10 @@ body {
 
 .image-details {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   font-size: 14px;
+  padding: 10px;
 
 }
 
