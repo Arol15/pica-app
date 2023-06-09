@@ -25,7 +25,7 @@ function App() {
 
   const indexOfLastImage = currentPage * IMAGES_PER_PAGE; 
   const indexOfFirstPost = indexOfLastImage - IMAGES_PER_PAGE; 
-  const currentImages = searchResult.slice(indexOfFirstPost, indexOfLastImage);
+  const currentImages = searchResult?.slice(indexOfFirstPost, indexOfLastImage);
 
   async function handleSearch(inputValue: string) {
     if(inputValue.length === 0) return;

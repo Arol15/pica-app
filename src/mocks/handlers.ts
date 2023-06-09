@@ -1,14 +1,12 @@
 import { rest } from "msw";
 
 export const handlers = [
-  rest.get(`https://pixabay.com/api/`, (req, res, ctx) => {
-    console.log('hello')
-    const query = req.url.searchParams.get('q');
-    const per_page = req.url.searchParams.get('per_page');
-    if (query === "flamingo" && per_page ==="200") {
+  rest.get(`https://pixabay.com/api/`, (req, res, ctx) => { 
+    const query = req.url.searchParams.get("q");
+    if (query === "example") {
       return res(
         ctx.json({
-          totalHits: 500,
+          totalHits: 6,
           hits: [
             {
               id: 1,
@@ -25,11 +23,6 @@ export const handlers = [
           ],
         })
       );
-    } else {
-      return res(ctx.json({
-        hits: [],
-        totalHits: 0
-      }));
-    }
+    } 
   }),
-];
+]
