@@ -9,7 +9,9 @@ const IMAGES_PER_PAGE = 20;
 
 export interface Image {
   id: number; 
-  previewURL: string;
+  webformatURL: string;
+  user: string; 
+  views: number; 
 }
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
