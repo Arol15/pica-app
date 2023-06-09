@@ -126,12 +126,17 @@ body {
   background: violet;
 }
 
+.status-message {
+  padding: 150px; 
+  text-align: center;
+}
+
 @media (max-width: 800px) {
   .images-container {
     grid-template-columns: repeat(2, 1fr);
     padding: 150px 10px
   }
-  
+
   .header {
     flex-direction: column;
   }
