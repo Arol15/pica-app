@@ -30,6 +30,7 @@ function App() {
   async function handleSearch(inputValue: string) {
     if(inputValue.length === 0) return;
     setStatus('idle');
+    setCurrentPage(1);
     try{
       setStatus('loading')
       const response = await fetch(`${API_URL}&q=${inputValue}&per_page=${IMAGES_PER_REQUEST}`);
