@@ -2,97 +2,35 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+body {
   font-family: Poppins, Arial, Helvetica, sans-serif;
+  font-size: 16px; 
 }
 
-.header {
-  margin: .5rem;
-  height: 7rem; 
-  background-color: violet;
-  border-radius: .5rem;
+.pagination-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  border: .1875em solid rebeccapurple;
+  margin: 50px 0; 
+  gap: 10px;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.logo span {
-  font-size: 3.2rem;
-}
-
-.logo h1 {
-  font-size: 2.4rem;
+.pagination-container .page-number {
+  font-size: 16px; 
   font-weight: 600;
-  color: #fff;
+  padding: 10px 20px; 
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  background-color: #fff;
 }
 
-.num-results {
-  font-size: 1.4rem;
+.pagination-container .page-number:hover {
+  background: violet;
 }
 
-.searchbox {
-  border: none;
-  padding: 1rem 1.3rem;
-  font-size: 1.3rem;
-  border-radius: 0.7rem;
-  width: 25rem;
-  transition: all 0.3s;
-  color: black;
-}
-
-.search-container {
-  display: flex; 
-  justify-content: center;
-}
-
-.search-container button {
-  margin-left: .5rem;
-  font-size: 1.3rem;
-  font-weight: bold;
-  line-height: 1;
-  text-transform: uppercase;
-  position: relative;
-  border: .1875em solid;
-  padding: 1rem;
-  color: white;
-  background: transparent;
-  border-radius: 50%;
-  transition: background .3s;
-  
-  &:hover,
-  &:focus {
-      color: white;
-      border-color: rebeccapurple;
-  }
-} 
-
-.svg-icon {
-  height: 2rem;
-  width: 2rem;
-  flex-shrink: 0;
-}
-
-.images-container {
-  margin: 5rem 10rem;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-}
-
-.grid-image {
-  border: .1875em solid rebeccapurple;
-  display: flex;
-  justify-content: center;
-  border-radius: .5rem;
-}
-
-.status-message {
-  margin: 5rem 10rem;
-  display: flex;
-  justify-content: center;
+.pagination-container .active {
+  background: violet;
 }

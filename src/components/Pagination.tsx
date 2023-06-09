@@ -16,17 +16,18 @@ function Pagination({currentPage, paginate, totalImages, imagesPerPage, previous
   }
 
   return (
-    <div>
-      <button onClick={previousPage}>Prev</button>
+    <div className='pagination-container'>
+      <button className='page-number' onClick={previousPage}>Prev</button>
       {pages.map(page => (
         <button
         key={page}
         onClick={() => paginate(page)}
+        className={`page-number ${page === currentPage ? 'active' : ''}`}
         >
           {page}
         </button>
       ))}
-      <button onClick={nextPage}>Next</button>
+      <button className='page-number' onClick={nextPage}>Next</button>
     </div>
   )
 }
