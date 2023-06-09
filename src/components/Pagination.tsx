@@ -3,9 +3,11 @@ interface PaginationProps {
   paginate: any; 
   totalImages: number; 
   imagesPerPage: number; 
+  previousPage: any; 
+  nextPage: any; 
 }
 
-function Pagination({currentPage, paginate, totalImages, imagesPerPage}: PaginationProps) {
+function Pagination({currentPage, paginate, totalImages, imagesPerPage, previousPage, nextPage}: PaginationProps) {
 
   const pages = []; 
 
@@ -15,6 +17,7 @@ function Pagination({currentPage, paginate, totalImages, imagesPerPage}: Paginat
 
   return (
     <div>
+      <button onClick={previousPage}>Prev</button>
       {pages.map(page => (
         <button
         key={page}
@@ -23,6 +26,7 @@ function Pagination({currentPage, paginate, totalImages, imagesPerPage}: Paginat
           {page}
         </button>
       ))}
+      <button onClick={nextPage}>Next</button>
     </div>
   )
 }
