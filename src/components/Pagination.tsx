@@ -1,10 +1,10 @@
 interface PaginationProps {
   currentPage: number; 
-  paginate: any; 
+  paginate: (page: number) => void; 
   totalImages: number; 
   imagesPerPage: number; 
-  previousPage: any; 
-  nextPage: any; 
+  previousPage: () => void; 
+  nextPage: () => void; 
 }
 
 function Pagination({currentPage, paginate, totalImages, imagesPerPage, previousPage, nextPage}: PaginationProps) {
