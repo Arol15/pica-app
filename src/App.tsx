@@ -20,7 +20,7 @@ function App() {
   const [searchResult, setSearchResult] = useState<Image[]>([]);
   const [status, setStatus] = useState<Status>('idle');
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalHits] = useState(0);
+  const [totalHits, setTotalHits] = useState(0);
 
   const indexOfLastImage = currentPage * IMAGES_PER_PAGE; 
   const indexOfFirstPost = indexOfLastImage - IMAGES_PER_PAGE; 
@@ -34,6 +34,7 @@ function App() {
       const response = await fetch(`${API_URL}&q=${inputValue}&per_page=${IMAGES_PER_REQUEST}`);
       const data = await response.json();
       setSearchResult(data.hits);
+      setTotalHits(data.totalHits);
       setStatus('success')
 
     } catch (error: any) {
@@ -76,7 +77,7 @@ function App() {
         {status === 'loading' && <p className="status-message">Loading...</p>}
         {searchResult.length === 0 && status === 'success' && <p className="status-message">No images. Please try another search term.</p>}
       <ResultsDataView searchResult={currentImages}/>
-      {searchResult.length > 0 && <Pagination currentPage={currentPage} paginate={paginate} totalImages={IMAGES_PER_REQUEST} imagesPerPage={IMAGES_PER_PAGE} previousPage={previousPage} nextPage={nextPage} />}
+      {searchResult.length > 0 && <Pagination currentPage={currentPage} paginate={paginate} totalImages={totalHits < IMAGES_PER_REQUEST ? totalHits : IMAGES_PER_REQUEST} imagesPerPage={IMAGES_PER_PAGE} previousPage={previousPage} nextPage={nextPage} />}
     </div>
   )
 }
