@@ -25,4 +25,24 @@ export const handlers = [
       );
     } 
   }),
+  rest.get(`https://pixabay.com/api/`, (req, res, ctx) => { 
+    const query = req.url.searchParams.get("q");
+    if (query === "jjjjjjj") {
+      return res(
+        ctx.json({
+          totalHits: 0,
+          hits: [],
+        })
+      );
+    } 
+  }),
+  rest.get(`https://pixabay.com/api/`, (req, res, ctx) => { 
+    const query = req.url.searchParams.get("q");
+    if (query === "hello") {
+      return res(
+        ctx.status(500),
+        ctx.json({ error: "Internal Server Error" })
+      );
+    } 
+  }),
 ]

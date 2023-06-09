@@ -11,8 +11,8 @@ function ResultsDataView({searchResult}: ResultsDataViewProps) {
         <div className='image-card' key={result.id}> 
           <img className='result-image' src={result.webformatURL} alt='searched image'/>
           <div className='image-details'>
-            <p className='username'>By: {result.user}</p>
-            <p className='views'>Views: {result.views}</p>
+            <p className='username'>By: {result.user || "None"}</p>
+            <p className='views'>Views: {result.views || "0"}</p>
           </div>
         </div>
       ))}
