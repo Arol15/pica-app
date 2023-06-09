@@ -16,7 +16,10 @@ function Pagination({currentPage, paginate, totalImages, imagesPerPage}: Paginat
   return (
     <div>
       {pages.map(page => (
-        <button>
+        <button
+        key={page}
+        onClick={() => paginate(page)}
+        >
           {page}
         </button>
       ))}

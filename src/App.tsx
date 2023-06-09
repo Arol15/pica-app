@@ -20,6 +20,7 @@ function App() {
   const [searchResult, setSearchResult] = useState<Image[]>([]);
   const [status, setStatus] = useState<Status>('idle');
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalHits] = useState(0);
 
   const indexOfLastImage = currentPage * IMAGES_PER_PAGE; 
   const indexOfFirstPost = indexOfLastImage - IMAGES_PER_PAGE; 
@@ -55,9 +56,11 @@ function App() {
         <SearchBar handleSearch={handleSearch}/>
         {searchResult.length > 0 && <p className="num-results">Found {searchResult.length} results</p>}
       </header>
-      {status === 'error' && (
+
+        {status === 'error' && (
           <p className="status-message">Sorry, something went wrong.</p>
         )}
+
         {status === 'loading' && <p className="status-message">Loading...</p>}
         {searchResult.length === 0 && status === 'success' && <p className="status-message">No images. Please try another search term.</p>}
       <ResultsDataView searchResult={currentImages}/>
