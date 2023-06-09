@@ -73,11 +73,9 @@ function App() {
           {searchResult.length > 0 && <p className="num-results">Found {searchResult.length} results</p>}
         </div>
       </header>
-
         {status === 'error' && (
           <p className="status-message">Sorry, something went wrong.</p>
         )}
-
         {status === 'loading' && <p className="status-message">Loading...</p>}
         {totalHits === 0 && status === 'success' && <p className="status-message">No images. Please try another search term.</p>}
       <ResultsDataView searchResult={currentImages}/>
