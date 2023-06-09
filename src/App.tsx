@@ -4,6 +4,8 @@ import ResultsDataView from "./components/ResultsDataView";
 import Pagination from "./components/Pagination";
 
 const API_URL = `https://pixabay.com/api/?key=${import.meta.env.VITE_PIXABAY_API_KEY}`;
+const IMAGES_PER_REQUEST = 200; 
+const IMAGES_PER_PAGE = 20; 
 
 export interface Image {
   id: number; 
@@ -11,9 +13,6 @@ export interface Image {
 }
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
-
-const IMAGES_PER_REQUEST = 200; 
-const IMAGES_PER_PAGE = 20; 
 
 function App() {
 
@@ -47,17 +46,17 @@ function App() {
     setCurrentPage(page); 
   }
 
-  const previousPage = () => {
-		if (currentPage !== 1) {
-			setCurrentPage(currentPage - 1);
-		}
-	};
+  function previousPage() {
+    if (currentPage !== 1) {
+    setCurrentPage(currentPage - 1);
+    }
+  }
 
-	const nextPage = () => {
-		if (currentPage !== Math.ceil(searchResult.length / IMAGES_PER_PAGE)) {
-			setCurrentPage(currentPage + 1);
-		}
-	};
+  function nextPage() {
+    if (currentPage !== Math.ceil(searchResult.length / IMAGES_PER_PAGE)) {
+    setCurrentPage(currentPage + 1);
+    }
+  }
 
   return (
     <div className="wrapper">
