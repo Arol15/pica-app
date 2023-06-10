@@ -7,7 +7,7 @@ A web application built with React, Typescript and Vite that enables users to se
 - Search for images using keywords or phrases.
 - Browse through the search results and view images.
 - Responsive design for optimal viewing on desktop and mobile devices.
-- Pagination support to load more images - TODO. 
+- Pagination support to load more images. 
 
 ## Technologies Used
 
@@ -44,6 +44,10 @@ This web application uses the Pixabay API for fetching image data. You need to o
 `VITE_PIXABAY_API=YOUR_API_KEY`
 
 For more information on the Pixabay API, visit [Pixabay API Documentation](https://pixabay.com/api/docs/).
+
+## App usage
+
+- User can type any word or several words in a search box. If 
 
 ## License
 
