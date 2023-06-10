@@ -1,7 +1,7 @@
 import { rest } from "msw";
 
 export const handlers = [
-  rest.get(`https://pixabay.com/api/`, (req, res, ctx) => { 
+  rest.get(`https://pixabay.com/api/`, (req, res, ctx) => {
     const query = req.url.searchParams.get("q");
     if (query === "example") {
       return res(
@@ -23,9 +23,9 @@ export const handlers = [
           ],
         })
       );
-    } 
+    }
   }),
-  rest.get(`https://pixabay.com/api/`, (req, res, ctx) => { 
+  rest.get(`https://pixabay.com/api/`, (req, res, ctx) => {
     const query = req.url.searchParams.get("q");
     if (query === "jjjjjjj") {
       return res(
@@ -34,15 +34,12 @@ export const handlers = [
           hits: [],
         })
       );
-    } 
+    }
   }),
-  rest.get(`https://pixabay.com/api/`, (req, res, ctx) => { 
+  rest.get(`https://pixabay.com/api/`, (req, res, ctx) => {
     const query = req.url.searchParams.get("q");
     if (query === "hello") {
-      return res(
-        ctx.status(500),
-        ctx.json({ error: "Internal Server Error" })
-      );
-    } 
+      return res(ctx.status(500), ctx.json({ error: "Internal Server Error" }));
+    }
   }),
-]
+];

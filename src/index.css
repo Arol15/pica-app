@@ -1,4 +1,5 @@
-*, html {
+*,
+html {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -6,7 +7,7 @@
 
 body {
   font-family: Poppins, Arial, Helvetica, sans-serif;
-  font-size: 16px; 
+  font-size: 16px;
 }
 
 .wrapper {
@@ -69,7 +70,7 @@ body {
   flex-grow: 1;
   font-size: 16px;
   padding: 10px 8px;
-  border: none; 
+  border: none;
   border-radius: 5px;
 }
 
@@ -107,21 +108,20 @@ body {
   align-items: center;
   font-size: 14px;
   padding: 10px;
-
 }
 
 .pagination-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px 0; 
+  padding: 50px 0;
   gap: 10px;
 }
 
 .pagination-container .page-number {
-  font-size: 16px; 
+  font-size: 16px;
   font-weight: 600;
-  padding: 10px 20px; 
+  padding: 10px 20px;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.5s ease;
@@ -137,14 +137,14 @@ body {
 }
 
 .status-message {
-  padding: 150px; 
+  padding: 150px;
   text-align: center;
 }
 
 @media (max-width: 800px) {
   .images-container {
     grid-template-columns: repeat(2, 1fr);
-    padding: 150px 10px
+    padding: 150px 10px;
   }
 
   .header {
@@ -152,14 +152,13 @@ body {
   }
 
   .pagination-container .page-number {
-    font-size: 10px; 
-    padding: 5px 10px; 
+    font-size: 10px;
+    padding: 5px 10px;
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.5s ease;
     background-color: #fff;
   }
-
 }
 @media (max-width: 400px) {
   .images-container {
@@ -174,13 +173,13 @@ body {
 
   .pagination-container {
     display: flex;
-    justify-content: center;  
+    justify-content: center;
     gap: 0;
   }
 
   .pagination-container .page-number {
-    font-size: 10px; 
-    padding: 5px 7px; 
+    font-size: 10px;
+    padding: 5px 7px;
     cursor: pointer;
     transition: all 0.5s ease;
     background-color: #fff;

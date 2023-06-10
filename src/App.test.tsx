@@ -34,14 +34,14 @@ test("Displays a status message when images are not found", async () => {
   ).toBeInTheDocument();
 });
 
-  test("Displays an error status message when there is a server error", async () => {
-    render(<App />);
+test("Displays an error status message when there is a server error", async () => {
+  render(<App />);
 
-    const searchInput = screen.getByRole("textbox");
-    const searchButton = screen.getByRole('button', { name: "Search" });
-  
-    await userEvent.type(searchInput, 'lion');
-    await userEvent.click(searchButton);
+  const searchInput = screen.getByRole("textbox");
+  const searchButton = screen.getByRole("button", { name: "Search" });
 
-    expect(screen.findAllByText('Sorry, something went wrong.'));
+  await userEvent.type(searchInput, "lion");
+  await userEvent.click(searchButton);
+
+  expect(screen.findAllByText("Sorry, something went wrong."));
 });
